@@ -1,37 +1,36 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   last_word.c                                        :+:      :+:    :+:   */
+/*   epur_str.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ael-mejd <ael-mejd@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/08/17 22:24:05 by ael-mejd          #+#    #+#             */
-/*   Updated: 2024/08/17 22:49:54 by ael-mejd         ###   ########.fr       */
+/*   Created: 2024/08/21 22:55:35 by ael-mejd          #+#    #+#             */
+/*   Updated: 2024/08/21 23:14:16 by ael-mejd         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <unistd.h>
-#include <stdio.h>
-#include <string.h>
 
 int main(int ac, char **av)
 {
-    int i;
-
-    i = 0;
     if (ac == 2)
     {
-        while (av[1][i])
-            i++;
-        i--;
+        int i = 0;
+        int flag = 0;
         while (av[1][i] && (av[1][i] == ' ' || av[1][i] == '\t'))
-            i--;
-        while (av[1][i] && (av[1][i] != ' ' && av[1][i] != '\t'))
-            i--;
-        i++;
-        while (av[1][i] && av[1][i] != ' ' && av[1][i] != ' ')
+            i++;
+        while (av[1][i])
         {
-            write(1, &av[1][i], 1);
+            if (av[1][i] == ' ' || av[1][i] == '\t')
+                flag = 1;
+            if (av[1][i] != ' ' && av[1][i] != '\t')
+            {
+                if (flag == 1)
+                    write(1, " ", 1);
+                flag = 0;
+                write(1, &av[1][i], 1);
+            }
             i++;
         }
     }

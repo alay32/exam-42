@@ -1,35 +1,17 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   snake_to_camel.c                                   :+:      :+:    :+:   */
+/*   ft_list.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ael-mejd <ael-mejd@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/08/18 22:49:56 by ael-mejd          #+#    #+#             */
-/*   Updated: 2024/08/18 23:04:43 by ael-mejd         ###   ########.fr       */
+/*   Created: 2024/08/22 16:38:46 by ael-mejd          #+#    #+#             */
+/*   Updated: 2024/08/22 16:38:55 by ael-mejd         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <unistd.h>
-
-int main(int ac, char **av)
+typedef struct    s_list
 {
-    int i;
-
-    i = 0;
-    if (ac == 2)
-    {
-        while (av[1][i])
-        {
-            if (av[1][i] == '_')
-            {
-                i++;
-                av[1][i] -= 32;
-            }
-            write(1, &av[1][i], 1);
-            i++;
-        }
-    }
-    write(1, "\n", 1);
-    return (0);
-}
+    struct s_list *next;
+    void          *data;
+}                 t_list;

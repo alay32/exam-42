@@ -42,8 +42,8 @@ int main()
     size_t dst;
     size_t src;
     
-    dst = ft_strspn("xyz abc", "abc");
-    src = strspn("xyz abc", "abc");
+    dst = ft_strspn("abc123def", "abc123");
+    src = strspn("abc123def", "abc123");
     printf("%zu\n", dst);
     printf("%zu", src);
     return (0);

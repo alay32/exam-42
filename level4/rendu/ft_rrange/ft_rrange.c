@@ -1,35 +1,39 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   snake_to_camel.c                                   :+:      :+:    :+:   */
+/*   ft_rrange.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ael-mejd <ael-mejd@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/08/18 22:49:56 by ael-mejd          #+#    #+#             */
-/*   Updated: 2024/08/18 23:04:43 by ael-mejd         ###   ########.fr       */
+/*   Created: 2024/08/18 23:49:06 by ael-mejd          #+#    #+#             */
+/*   Updated: 2024/08/23 12:46:28 by ael-mejd         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <unistd.h>
+#include <stdlib.h>
 
-int main(int ac, char **av)
+int *ft_rrange(int start, int end)
 {
-    int i;
+	int *range;
+	int i = 0;
+	int step = 1;
+	int n = end - start;
 
-    i = 0;
-    if (ac == 2)
-    {
-        while (av[1][i])
-        {
-            if (av[1][i] == '_')
-            {
-                i++;
-                av[1][i] -= 32;
-            }
-            write(1, &av[1][i], 1);
-            i++;
-        }
-    }
-    write(1, "\n", 1);
-    return (0);
+	if (n < 0)
+		(n *= -1);
+	n++;
+
+	range = (int *)malloc(sizeof(int) * n);
+	if (range)
+	{
+		if (start < end)
+			step = -1;
+		while (i < n)
+		{
+			range[i] = end;
+			end = end + step;
+			i++;
+		}
+	}
+	return (range);
 }

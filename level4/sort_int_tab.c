@@ -1,35 +1,37 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   snake_to_camel.c                                   :+:      :+:    :+:   */
+/*   sort_int_tab.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ael-mejd <ael-mejd@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/08/18 22:49:56 by ael-mejd          #+#    #+#             */
-/*   Updated: 2024/08/18 23:04:43 by ael-mejd         ###   ########.fr       */
+/*   Created: 2024/08/23 18:08:42 by ael-mejd          #+#    #+#             */
+/*   Updated: 2024/08/23 18:27:46 by ael-mejd         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <unistd.h>
-
-int main(int ac, char **av)
+void	sort_int_tab(int *tab, unsigned int size)
 {
-    int i;
-
-    i = 0;
-    if (ac == 2)
+    unsigned int i = 0;
+    int tmp;
+    unsigned int j = 1;
+    while (i < size && j < size)
     {
-        while (av[1][i])
+        if (tab[0] > tab[1])
         {
-            if (av[1][i] == '_')
-            {
-                i++;
-                av[1][i] -= 32;
-            }
-            write(1, &av[1][i], 1);
-            i++;
+            tmp = tab[0];
+            tab[0] = tab[1];
+            tab[1]
         }
+        if (tab[i] < tab[j])
+        {
+            tmp = tab[i];
+            tab[i] = tab[j];
+            tab[j]= tmp;
+            i = 0;
+            j = -1;
+        }
+        i++;
+        j++;
     }
-    write(1, "\n", 1);
-    return (0);
 }
